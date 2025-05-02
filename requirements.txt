@@ -3,4 +3,3 @@ opencv-python-headless
 mediapipe
 pyautogui
 numpy
-python==3.10

@@ -41,7 +41,12 @@ def recognize_gesture(frame):
     return gesture, result
 
 def run_gesture_control():
+    # Attempt to open webcam
     cap = cv2.VideoCapture(0)  # Open webcam
+    if not cap.isOpened():
+        st.error("Webcam not accessible. Please ensure your webcam is connected and accessible.")
+        return
+
     stframe = st.empty()  # Placeholder for frame display in Streamlit
 
     while cap.isOpened():
@@ -78,6 +83,8 @@ st.title("🖐️ Gesture Controlled Interface")
 if st.button("▶️ Start Gesture Control"):
     run_gesture_control()
 
+# Fallback for testing without webcam
 st.markdown("### Instructions:")
 st.markdown("- **Thumb-Index Touch** → Detected when the thumb and index finger are close.")
 st.markdown("- **Open Hand** → Detected when the hand is open.")
+st.markdown("\n\nIf you're unable to access the webcam, try testing the app locally with your webcam connected.")

@@ -13,7 +13,7 @@ import queue
 # Page configuration
 st.set_page_config(
     page_title="Gesture Recognition Control",
-    page_icon="👋",
+    page_icon="",
     layout="wide"
 )
 
@@ -208,7 +208,7 @@ left_col, right_col = st.columns([1, 2])
 
 with left_col:
     # Start button
-    if st.button("🎥 Start Camera", disabled=st.session_state.camera_running, use_container_width=True):
+    if st.button("Start Camera", disabled=st.session_state.camera_running, use_container_width=True):
         if st.session_state.controller.setup_recognizer():
             if st.session_state.controller.start_camera():
                 st.session_state.camera_running = True
@@ -216,7 +216,7 @@ with left_col:
                 st.rerun()
     
     # Stop button
-    if st.button("⏹️ Stop Camera", disabled=not st.session_state.camera_running, use_container_width=True):
+    if st.button("Stop Camera", disabled=not st.session_state.camera_running, use_container_width=True):
         st.session_state.controller.stop_camera()
         st.session_state.camera_running = False
         st.rerun()
@@ -228,7 +228,7 @@ with left_col:
     * 🖐️ **Open Palm**: Move mouse cursor
     * ✊ **Closed Fist**: Scroll up/down
     * 👍 **Thumb Up**: Click""")
-    
+
 with right_col:
     # Camera feed display
     if st.session_state.camera_running:
